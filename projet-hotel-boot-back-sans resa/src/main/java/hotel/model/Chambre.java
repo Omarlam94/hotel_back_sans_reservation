@@ -21,7 +21,8 @@ public class Chambre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne(cascade = CascadeType.REMOVE)
+	@OneToOne (cascade = CascadeType.REMOVE)
+	//@OneToOne(orphanRemoval = false, cascade = CascadeType.REFRESH)
 	private Passager passager;
 	
 	@Enumerated(EnumType.STRING) //ça sert à quoi ?

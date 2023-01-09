@@ -86,7 +86,10 @@ public class ReservationResource {
 					activitePassagerDTO.setNombre(passager.getPrestation().getNombre());
 					activitePassagerDTO.setId_prestation((passager.getPrestation().getId()));
 					activitePassagerDTO.setDate(passager.getPrestation().getDate());
-					activitePassagerDTO.setTypeActivite(passager.getPrestation().getTypeActivite().toString());
+					if (passager.getPrestation().getTypeActivite()!=null) {
+						activitePassagerDTO.setTypeActivite(passager.getPrestation().getTypeActivite().toString());
+					}
+
 					reservationDto.setId_chambre(passager.getChambre().getId());
 
 				}
@@ -255,6 +258,8 @@ public class ReservationResource {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		Passager p=daoPassager.findById(id).get();
+//		p.setChambre(null);
+//		daoPassager.save(p);
 //		ReservationActivite activite = daoReservationActivite.findById(p.getResactivite().getId()).get();
 //		daoReservationActivite.delete(activite);
 		daoPassager.delete(p);
@@ -330,6 +335,7 @@ public ReservationDto createbis( @RequestBody ReservationDto reservationDto) {
 							//	prestation = daoPrestation.save(prestation);
 								prestation.setNombre(p.getNombre());
 								prestation.setTypeActivite(TypeActivite.salledesport);
+								prestation.setDate(p.getDate());
 								//prestation=daoPrestation.save(prestation);
 				//				activite.setPrestation(prestation);
 				//				activite.setPassager(passager);
@@ -340,6 +346,7 @@ public ReservationDto createbis( @RequestBody ReservationDto reservationDto) {
 								//prestation = daoPrestation.save(prestation);
 								prestation.setNombre(p.getNombre());
 								prestation.setTypeActivite(TypeActivite.restaurant);
+								prestation.setDate(p.getDate());
 								//prestation=daoPrestation.save(prestation);
 				//				activite.setPrestation(prestation);
 				//				activite.setPassager(passager);

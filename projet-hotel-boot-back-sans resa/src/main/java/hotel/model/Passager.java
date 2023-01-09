@@ -37,7 +37,7 @@ public class Passager {
 	private String prenom;
 	
 	@JoinColumn(name = "room_id")
-	@OneToOne  (cascade = CascadeType.REFRESH)
+	@OneToOne  (cascade = CascadeType.REMOVE)
 	private Chambre chambre;
 	
 	@Column(name = "birthdate")
