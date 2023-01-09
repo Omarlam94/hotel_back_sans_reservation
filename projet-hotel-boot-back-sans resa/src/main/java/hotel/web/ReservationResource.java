@@ -258,6 +258,7 @@ public class ReservationResource {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		Passager p=daoPassager.findById(id).get();
+		System.out.println(p);
 //		p.setChambre(null);
 //		daoPassager.save(p);
 //		ReservationActivite activite = daoReservationActivite.findById(p.getResactivite().getId()).get();
@@ -312,7 +313,7 @@ public ReservationDto createbis( @RequestBody ReservationDto reservationDto) {
 				//passager=daoPassager.save(passager);
 			//	ReservationActivite activite = new ReservationActivite();
 			//	activite = daoReservationActivite.save(activite);
-				chambre.setPassager(passager);
+			
 				
 				passager.setChambre(chambre);
 				

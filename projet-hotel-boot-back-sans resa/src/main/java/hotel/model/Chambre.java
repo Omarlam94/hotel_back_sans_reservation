@@ -1,5 +1,7 @@
 package hotel.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,10 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.stereotype.Component;
 //TO-DO ajouté un booléen disponibilité -- date de résa ?
 
 @Entity
@@ -21,9 +21,9 @@ public class Chambre {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@OneToOne (cascade = CascadeType.REMOVE)
+	@OneToMany (cascade = CascadeType.REMOVE,mappedBy = "chambre")
 	//@OneToOne(orphanRemoval = false, cascade = CascadeType.REFRESH)
-	private Passager passager;
+	private List<Passager> passagers;
 	
 	@Enumerated(EnumType.STRING) //ça sert à quoi ?
 	@Column(name="typeChambre",columnDefinition = "ENUM('chambresimple','suite','suitepresidentielle')")
@@ -59,14 +59,14 @@ public class Chambre {
 
 
 
-	public Passager getPassager() {
-		return passager;
+	public List<Passager> getPassagers() {
+		return passagers;
 	}
 
 
 
-	public void setPassager(Passager passager) {
-		this.passager = passager;
+	public void setPassager(List<Passager> passager) {
+		this.passagers = passager;
 	}
 	
 	

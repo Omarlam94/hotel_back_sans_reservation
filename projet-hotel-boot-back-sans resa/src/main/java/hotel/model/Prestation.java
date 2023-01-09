@@ -36,7 +36,7 @@ public class Prestation {
 	@Column(name = "date_prestation")
 	private LocalDate date;
 	
-	@Enumerated(EnumType.STRING) //ça sert à quoi ?
+	@Enumerated(EnumType.STRING) 
 	@Column(name="type_prestation",columnDefinition = "ENUM('restaurant','spa','salledesport')")
 	private TypeActivite typeActivite;
 	
