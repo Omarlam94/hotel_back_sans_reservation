@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -16,9 +19,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table (name = "client")
-@PrimaryKeyJoinColumn(name = "id_client")
 public class Client extends Compte{
-
+	
 	@Column(name = "name", columnDefinition = "VARCHAR(35)")
 	@JsonView(views.ViewBase.class)
 	private String nom;
@@ -35,7 +37,7 @@ public class Client extends Compte{
 	@JsonView(views.ViewBase.class)
 	private String telephone;
 	
-	@Column(name = "birthdate", nullable = false)
+	@Column(name = "birthdate")
 	@JsonView(views.ViewBase.class)
 	private LocalDate naissance;
 	
@@ -112,6 +114,18 @@ public class Client extends Compte{
 
 	public void setResa(List<Reservation> resa) {
 		this.resa = resa;
+	}
+
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	
